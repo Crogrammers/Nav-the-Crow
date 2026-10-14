@@ -4,11 +4,13 @@ public class PlayerController : MonoBehaviour
 {
     // cache variable for rigid body
     // prevent it to get every frame
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    public float movementSpeed = 2f;
-    public float jumpSpeed = 2f;
+    public float movementSpeed;
+    public float jumpSpeed;
+    private bool isGrounded;
 
+    public float inGroundDumping;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,18 +21,28 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.A))
-        {
             rb.linearVelocity = new Vector2(-movementSpeed, rb.linearVelocity.y);
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
+        else if (Input.GetKey(KeyCode.D))
             rb.linearVelocity = new Vector2(movementSpeed, rb.linearVelocity.y);
-        }
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded &&
+            (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed);
+            isGrounded = false;
         }
+
+        if (isGrounded)
+        {
+            rb.linearVelocity = new Vector2(
+               rb.linearVelocity.x * inGroundDumping,
+               rb.linearVelocity.y);
+        }
+
+    //void OnCollisionEnter2D(Collision2D other)
+    //    {
+    //        if (other.gameObject.CompareTag("ground"))
+    //            isGrounded = true;
+    //    }
     }
 }
