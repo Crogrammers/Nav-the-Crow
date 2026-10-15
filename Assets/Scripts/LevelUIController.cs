@@ -17,7 +17,7 @@ public class LevelUIController : MonoBehaviour
 
         LivesLabel.text = "Lives: " + lives;
         ScoreLabel.text = "Score: " + score;
-        TimeLabel.text = "Time: " + totalTime.ToString(format: "0.0###") + "s";
+        TimeLabel.text = "Time: " + totalTime.ToString(format: "0.0") + "s";
     }
     public void Kill()
     {
@@ -26,5 +26,15 @@ public class LevelUIController : MonoBehaviour
         lives--;
         if(lives == 0)
             SceneManager.LoadScene("GameOver");
+    }
+
+    public void collect()
+    {
+        score++;
+        if (score == 100)
+        {
+            lives++;
+            score = 0;
+        }
     }
 }

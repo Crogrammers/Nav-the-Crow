@@ -25,24 +25,25 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
             rb.linearVelocity = new Vector2(movementSpeed, rb.linearVelocity.y);
 
+        // Jumping
         if (isGrounded &&
-            (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
+                 (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed);
+            rb.linearVelocity = new Vector2(
+                rb.linearVelocity.x, jumpSpeed);
             isGrounded = false;
         }
 
         if (isGrounded)
-        {
             rb.linearVelocity = new Vector2(
                rb.linearVelocity.x * inGroundDumping,
                rb.linearVelocity.y);
-        }
 
-    //void OnCollisionEnter2D(Collision2D other)
-    //    {
-    //        if (other.gameObject.CompareTag("ground"))
-    //            isGrounded = true;
-    //    }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("ground"))
+            isGrounded = true;
     }
 }
