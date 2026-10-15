@@ -31,6 +31,11 @@ public class LevelUIController : MonoBehaviour
     public void collect()
     {
         score++;
+        if (score == 5)
+        {
+            score = 0;
+            SceneManager.LoadScene("Win");
+        }
         if (score == 100)
         {
             lives++;
