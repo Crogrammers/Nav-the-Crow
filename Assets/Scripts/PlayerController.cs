@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     public float movementSpeed;
+    public float sprintSpeed;
     public float jumpSpeed;
     private bool isGrounded;
 
