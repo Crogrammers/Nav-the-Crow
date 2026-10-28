@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(
                 rb.linearVelocity.x, jumpSpeed);
-            isGrounded = false;
+                isGrounded = false;
         }
 
         if (isGrounded)
