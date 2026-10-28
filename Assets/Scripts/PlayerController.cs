@@ -46,5 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("ground"))
             isGrounded = true;
+        else if (other.gameObject.CompareTag("Build Material"))
+            isGrounded = true;
     }
 }
