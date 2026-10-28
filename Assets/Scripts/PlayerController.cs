@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,11 +12,18 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed;
     private bool isGrounded;
 
+    private SpriteRenderer spriteRenderer;
+
     public float inGroundDumping;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -39,6 +47,17 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector2(
                rb.linearVelocity.x * inGroundDumping,
                rb.linearVelocity.y);
+
+        float moveInput = Input.GetAxisRaw("Horizontal");
+
+        if (moveInput < 0)
+        {
+            spriteRenderer.flipX = false; // Face right
+        }
+        else if (moveInput > 0)
+        {
+            spriteRenderer.flipX = true; // Face left
+        }
 
     }
 

@@ -7,7 +7,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            FindObjectOfType<LevelUIController>().collect();
+            FindAnyObjectByType<LevelUIController>().collect();
             Destroy(gameObject);
         }
     }
