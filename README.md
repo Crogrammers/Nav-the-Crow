@@ -2,6 +2,7 @@
 https://trello.com/b/wqStm2zM/navigate-the-crow
 # Archive of previous builds
 Proof of concept (building) - https://nimacs.itch.io/nav-the-crow-proof-of-concept?secret=CVPyuinHWJnOVI4hTQZ1mHIDkw
+The other building proof of concept (more recent/week 2) - https://nimacs.itch.io/nav-the-crow-poc?secret=CB7X7ti80WaXcYhNlSnuWqXLoM8
 
 # Unity 6 CI/CD Boilerplate with GitHub Actions
 
