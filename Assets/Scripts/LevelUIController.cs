@@ -16,7 +16,7 @@ public class LevelUIController : MonoBehaviour
         totalTime += Time.deltaTime;
 
         LivesLabel.text = "Lives: " + lives;
-        ScoreLabel.text = "Score: " + score;
+        ScoreLabel.text = "Money: $" + score;
         TimeLabel.text = "Time: " + totalTime.ToString(format: "0.0") + "s";
     }
     public void Kill()

@@ -37,7 +37,7 @@ public class GlassBreak : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             onGlass = true;
-            Debug.Log("are you sure");
+            //Debug.Log("are you sure");
         }
        
         //breakTimer = Time.deltaTime;
@@ -51,7 +51,7 @@ public class GlassBreak : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             onGlass = false;
-            Debug.Log("are you not sure");
+            //Debug.Log("are you not sure");
         }
     }
 
