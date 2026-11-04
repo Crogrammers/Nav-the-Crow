@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public float sprintSpeed;
     public float jumpSpeed;
     private bool isGrounded;
-    public bool inBuildMode;
 
     private SpriteRenderer spriteRenderer;
 
@@ -30,9 +29,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A) && (inBuildMode == false))
+        if (Input.GetKey(KeyCode.A))
             rb.linearVelocity = new Vector2(-movementSpeed, rb.linearVelocity.y);
-        else if (Input.GetKey(KeyCode.D) && (inBuildMode == false))
+        else if (Input.GetKey(KeyCode.D))
             rb.linearVelocity = new Vector2(movementSpeed, rb.linearVelocity.y);
 
         // Jumping
