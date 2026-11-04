@@ -15,7 +15,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Distraction
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 958249043
     locked: 0
   m_RenderingLayers:
   - Default
