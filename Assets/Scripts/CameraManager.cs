@@ -21,10 +21,14 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (playerCam.isActiveAndEnabled)
+            CamFollow();
+    }
+
+    private void Update()
+    {
         if (buildCam.isActiveAndEnabled)
             CamMove();
-        else if (playerCam.isActiveAndEnabled)
-            CamFollow();
     }
 
     private void CamMove()
