@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    public void GotToLevel()
+    public void GotToLevel(string level)
     {
-        SceneManager.LoadScene("BuildingTest");
+        SceneManager.LoadScene(level);
     }
 
     public void GotToMenu()
