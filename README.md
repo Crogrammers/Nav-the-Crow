@@ -1,5 +1,7 @@
 # Trello
 https://trello.com/b/wqStm2zM/navigate-the-crow
+# Feedback
+https://docs.google.com/document/d/10nt-8TrMi2TMDSEjs9VDUfB7cB_kzcRLlvNLq-fguM4/edit?tab=t.0
 # Archive of previous builds
 Proof of concept (building) - https://nimacs.itch.io/nav-the-crow-proof-of-concept?secret=CVPyuinHWJnOVI4hTQZ1mHIDkw
 
