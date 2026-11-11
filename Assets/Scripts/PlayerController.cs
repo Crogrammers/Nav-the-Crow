@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -12,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed;
     [SerializeField] private BoolSO buildMode;
     private bool isGrounded;
+
+    public Collectible cm;
 
     private SpriteRenderer spriteRenderer;
 
@@ -80,5 +84,14 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         else if (other.gameObject.CompareTag("Build Material"))
             isGrounded = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Collectible"))
+        {
+            Destroy(other.gameObject);
+            cm.coinCount++;
+        }
     }
 }

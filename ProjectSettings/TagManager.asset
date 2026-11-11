@@ -9,6 +9,7 @@ TagManager:
   - Wallet
   - Victim
   - Distraction
+  - Collectible
   layers:
   - Default
   - TransparentFX

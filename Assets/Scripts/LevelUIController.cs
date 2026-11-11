@@ -5,18 +5,20 @@ using UnityEngine.SceneManagement;
 public class LevelUIController : MonoBehaviour
 {
     public int lives = 3;
-    public int score;
+    //public int score;
     public float totalTime;
     public TextMeshProUGUI LivesLabel;
-    public TextMeshProUGUI ScoreLabel;
+    //public TextMeshProUGUI ScoreLabel;
     public TextMeshProUGUI TimeLabel;
+
+    public Collectible cm;
 
     void Update()
     {
         totalTime += Time.deltaTime;
 
         LivesLabel.text = "Lives: " + lives;
-        ScoreLabel.text = "Money: $" + score;
+        //ScoreLabel.text = "Money: $" + cm.coinCount;
         TimeLabel.text = "Time: " + totalTime.ToString(format: "0.0") + "s";
     }
     public void Kill()
@@ -30,16 +32,6 @@ public class LevelUIController : MonoBehaviour
 
     public void collect()
     {
-        score++;
-        if (score == 5)
-        {
-            score = 0;
-            SceneManager.LoadScene("Win");
-        }
-        if (score == 100)
-        {
-            lives++;
-            score = 0;
-        }
+        //cm.coinCount++;
     }
 }
