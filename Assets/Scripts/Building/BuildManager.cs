@@ -1,12 +1,18 @@
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
+using Unity.VisualScripting;
 
 public class BuildManager : MonoBehaviour
 {
     private Transform currentObj;
     [SerializeField] float gridX, gridY;
+    [SerializeField] GameObject buildUI;
+    [SerializeField] BoolSO buildMode;
     [SerializeField] private GameObjListSO grabableObjs, currentObjSO;
+    [SerializeField] private TextMeshProUGUI costTEMPTHINGtext;
+    private int costTEMPTHINGGint = 0;
 
     public void Spawn(GameObject spawn)
     {
@@ -16,15 +22,38 @@ public class BuildManager : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         currentObj = Instantiate(spawn, new Vector2(mousePos.x, mousePos.y), Quaternion.identity).transform;
         currentObj.GetChild(0).gameObject.SetActive(true);
+
+        costTEMPTHINGGint += 1;
+    }
+
+    public void SetBuildMode(bool boolean)
+    {
+        buildMode.boolean = boolean;
     }
 
     void Start()
     {
         grabableObjs.objsList.Clear();
         //currentObjSO.objsList.Clear();
+        buildMode.boolean = true;
     }
 
     void Update()
+    {
+        if (buildMode.boolean)
+        {
+            buildUI.SetActive(true);
+            BuildAndMove();
+        }
+        else
+        {
+            buildUI.SetActive(false);
+        }
+
+        costTEMPTHINGtext.text = $"Cost: {costTEMPTHINGGint}";
+    }
+
+    void BuildAndMove()
     {
         if (currentObj != null)
         {
@@ -59,6 +88,14 @@ public class BuildManager : MonoBehaviour
 
             if (grabableObjs.objsList.Count != 0)
                 grabableObjs.objsList[0].GetChild(0).gameObject.SetActive(true);
+        }
+
+        if (Input.GetMouseButtonDown(1) && grabableObjs.objsList.Count != 0)
+        {
+            Destroy(grabableObjs.objsList[0].gameObject);
+            currentObj = null;
+
+            costTEMPTHINGGint -= 1;
         }
 
         currentObjSO.objsList[0] = currentObj;

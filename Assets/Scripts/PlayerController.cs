@@ -31,7 +31,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!buildMode.boolean)
+        {
             Move();
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
     }
 
     void Move()
