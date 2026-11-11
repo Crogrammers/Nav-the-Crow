@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed;
     public float sprintSpeed;
     public float jumpSpeed;
+    [SerializeField] private BoolSO buildMode;
     private bool isGrounded;
 
     private SpriteRenderer spriteRenderer;
@@ -29,10 +30,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!buildMode.boolean)
+            Move();
+    }
+
+    void Move()
+    {
         if (Input.GetKey(KeyCode.A))
-            rb.linearVelocity = new Vector2(-movementSpeed, rb.linearVelocity.y);
+             rb.linearVelocity = new Vector2(-movementSpeed, rb.linearVelocity.y);
         else if (Input.GetKey(KeyCode.D))
-            rb.linearVelocity = new Vector2(movementSpeed, rb.linearVelocity.y);
+             rb.linearVelocity = new Vector2(movementSpeed, rb.linearVelocity.y);
 
         // Jumping
         if (isGrounded &&
@@ -58,7 +65,6 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = true; // Face left
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D other)

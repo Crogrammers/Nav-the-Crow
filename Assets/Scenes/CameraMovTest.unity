@@ -1189,7 +1189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!70 &780432803
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1242,6 +1242,7 @@ MonoBehaviour:
   movementSpeed: 5
   sprintSpeed: 0
   jumpSpeed: 5
+  buildMode: {fileID: 11400000, guid: 58546d98cd9eb264586e194cd6aa648f, type: 2}
   inGroundDumping: 0.95
 --- !u!50 &780432805
 Rigidbody2D:
@@ -2945,6 +2946,7 @@ MonoBehaviour:
   minCamSize: 2
   zoomSpeed: 10
   moveSpeed: 20
+  buildMode: {fileID: 11400000, guid: 58546d98cd9eb264586e194cd6aa648f, type: 2}
 --- !u!4 &1569968062
 Transform:
   m_ObjectHideFlags: 0

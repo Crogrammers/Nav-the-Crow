@@ -8,6 +8,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Camera playerCam, buildCam;
     [SerializeField] private Collider2D camArea;
     [SerializeField] private float maxCamSize, minCamSize, zoomSpeed, moveSpeed;
+    [SerializeField] private BoolSO buildMode;
     private Bounds bounds, camBounds;
 
     //float height = camera.orthographicSize;
@@ -27,6 +28,11 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
+        if (playerCam.isActiveAndEnabled && buildMode.boolean)
+            SwitchCamera();
+        else if (buildCam.isActiveAndEnabled && !buildMode.boolean)
+            SwitchCamera();
+
         if (buildCam.isActiveAndEnabled)
             CamMove();
     }
