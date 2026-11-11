@@ -5,6 +5,8 @@ Proof of concept (building) - https://nimacs.itch.io/nav-the-crow-proof-of-conce
 
 The other building proof of concept (more recent/week 2) - https://nimacs.itch.io/nav-the-crow-poc?secret=CB7X7ti80WaXcYhNlSnuWqXLoM8
 
+Vertical slice - https://nimacs.itch.io/nav-the-crow-vertical-slice
+
 # Unity 6 CI/CD Boilerplate with GitHub Actions
 
 A Unity 6000.x project that teaches you proper CI/CD on GitHub:
