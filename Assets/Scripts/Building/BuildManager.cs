@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class BuildManager : MonoBehaviour
 {
@@ -45,12 +46,23 @@ public class BuildManager : MonoBehaviour
             buildUI.SetActive(true);
             BuildAndMove();
         }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            EnterBuildMode();
+        }
         else
         {
             buildUI.SetActive(false);
         }
 
         costTEMPTHINGtext.text = $"Cost: {costTEMPTHINGGint}";
+    }
+
+    void EnterBuildMode()
+    {
+        buildMode.boolean = true;
+        buildUI.SetActive(true);
+        BuildAndMove();
     }
 
     void BuildAndMove()

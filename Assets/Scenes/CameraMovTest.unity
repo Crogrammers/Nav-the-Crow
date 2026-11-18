@@ -1520,6 +1520,7 @@ MonoBehaviour:
   jumpSpeed: 5
   buildMode: {fileID: 11400000, guid: 58546d98cd9eb264586e194cd6aa648f, type: 2}
   cm: {fileID: 1508416465}
+  startPosition: {x: 0, y: 0, z: 0}
   inGroundDumping: 0.95
 --- !u!50 &780432805
 Rigidbody2D:
@@ -3837,6 +3838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606a8d712c16ea544bf183ec399552bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCBehavior
+  RespawnPoint: {fileID: 949708198}
 --- !u!212 &1738252489
 SpriteRenderer:
   serializedVersion: 3

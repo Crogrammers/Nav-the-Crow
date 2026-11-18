@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     public Collectible cm;
+    public Vector3 startPosition;
 
     private SpriteRenderer spriteRenderer;
 
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        startPosition = transform.position;
     }
 
     void Awake()
@@ -34,6 +36,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            resetCharacter();
+        }
         if (!buildMode.boolean)
         {
             Move();
@@ -43,6 +49,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
+    }
+
+    public void resetCharacter()
+    {
+        var controller = FindAnyObjectByType<LevelUIController>();
+        controller.Kill();
+        transform.position = startPosition;
     }
 
     void Move()
@@ -91,7 +104,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Collectible"))
         {
             Destroy(other.gameObject);
-            cm.coinCount++;
+            cm.coinCount += 5;
         }
     }
 }

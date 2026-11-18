@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class NPCBehavior : MonoBehaviour
 {
     private bool isDistracted;
+    public Transform RespawnPoint;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,7 +14,9 @@ public class NPCBehavior : MonoBehaviour
         }
         else if (other.CompareTag("Player") && isDistracted == false)
         {
-            SceneManager.LoadScene("GameOver");
+            var life = FindAnyObjectByType<LevelUIController>();
+            life.Kill();
+            other.transform.position = RespawnPoint.position;
         }
     }
 
