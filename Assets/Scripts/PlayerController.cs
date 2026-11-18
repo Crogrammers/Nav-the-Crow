@@ -12,8 +12,10 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed;
     public float sprintSpeed;
     public float jumpSpeed;
-    [SerializeField] private BoolSO buildMode;
+    [SerializeField] private BoolSO buildMode, isPaused;
     private bool isGrounded;
+    private bool firstJump = true;
+    [SerializeField] private float floatVelocity=2;
 
     public Collectible cm;
     public Vector3 startPosition;
@@ -40,7 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             resetCharacter();
         }
-        if (!buildMode.boolean)
+        if (!buildMode.boolean && !isPaused.boolean)
         {
             Move();
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -66,12 +68,37 @@ public class PlayerController : MonoBehaviour
              rb.linearVelocity = new Vector2(movementSpeed, rb.linearVelocity.y);
 
         // Jumping
-        if (isGrounded &&
+        if ((isGrounded) &&
                  (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
         {
             rb.linearVelocity = new Vector2(
                 rb.linearVelocity.x, jumpSpeed);
+            //isGrounded = false;
+            /*if (isGrounded)
+            {
                 isGrounded = false;
+                firstJump = true;
+            }
+            else if (firstJump && !isGrounded)
+            {
+                firstJump = false;
+            }*/
+        }
+        else if (firstJump &&
+                 (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
+        {
+            rb.linearVelocity = new Vector2(
+                rb.linearVelocity.x, jumpSpeed);
+            //isGrounded = false;
+            /*if (isGrounded)
+            {
+                isGrounded = false;
+                firstJump = true;
+            }
+            else if (firstJump && !isGrounded)
+            {*/
+                firstJump = false;
+            //}
         }
 
         if (isGrounded)
@@ -79,7 +106,12 @@ public class PlayerController : MonoBehaviour
                rb.linearVelocity.x * inGroundDumping,
                rb.linearVelocity.y);
 
-        float moveInput = Input.GetAxisRaw("Horizontal");
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)) && !isGrounded)
+            rb.linearVelocity = new Vector2(
+              rb.linearVelocity.x,
+              rb.linearVelocity.y + floatVelocity); // todoZ count energy given to the bird
+
+            float moveInput = Input.GetAxisRaw("Horizontal");
 
         if (moveInput < 0)
         {
@@ -94,9 +126,29 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("ground"))
+        {
             isGrounded = true;
+            firstJump = false;
+        }
         else if (other.gameObject.CompareTag("Build Material"))
+        {
             isGrounded = true;
+            firstJump = false;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("ground"))
+        {
+            isGrounded = false;
+            firstJump = true;
+        }
+        else if (other.gameObject.CompareTag("Build Material"))
+        {
+            isGrounded = false;
+            firstJump = true;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

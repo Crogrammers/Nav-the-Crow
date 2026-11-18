@@ -11,11 +11,16 @@ public class LevelUIController : MonoBehaviour
     //public TextMeshProUGUI ScoreLabel;
     public TextMeshProUGUI TimeLabel;
 
+    [SerializeField] private BoolSO buildMode, isPaused;
+
     public Collectible cm;
 
     void Update()
     {
-        totalTime += Time.deltaTime;
+        if (!buildMode.boolean && !isPaused.boolean)
+        {
+            totalTime += Time.deltaTime;
+        }
 
         LivesLabel.text = "Lives: " + lives;
         //ScoreLabel.text = "Money: $" + cm.coinCount;

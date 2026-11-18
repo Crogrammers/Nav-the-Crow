@@ -10,7 +10,7 @@ public class BuildManager : MonoBehaviour
     private Transform currentObj;
     [SerializeField] float gridX, gridY;
     [SerializeField] GameObject buildUI;
-    [SerializeField] BoolSO buildMode;
+    [SerializeField] BoolSO buildMode, isPaused;
     [SerializeField] private GameObjListSO grabableObjs, currentObjSO;
     [SerializeField] private TextMeshProUGUI costTEMPTHINGtext;
     private int costTEMPTHINGGint = 0;
@@ -41,6 +41,7 @@ public class BuildManager : MonoBehaviour
 
     void Update()
     {
+
         if (buildMode.boolean)
         {
             buildUI.SetActive(true);

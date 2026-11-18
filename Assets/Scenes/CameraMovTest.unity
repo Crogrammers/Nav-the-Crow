@@ -1517,8 +1517,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   movementSpeed: 5
   sprintSpeed: 0
-  jumpSpeed: 5
+  jumpSpeed: 2
   buildMode: {fileID: 11400000, guid: 58546d98cd9eb264586e194cd6aa648f, type: 2}
+  isPaused: {fileID: 11400000, guid: ebd6fce34ce8cf347813de2e3f75a4cf, type: 2}
+  floatVelocity: 0.015
   cm: {fileID: 1508416465}
   startPosition: {x: 0, y: 0, z: 0}
   inGroundDumping: 0.95
@@ -1796,6 +1798,8 @@ MonoBehaviour:
   totalTime: 0
   LivesLabel: {fileID: 1826831316}
   TimeLabel: {fileID: 549927842}
+  buildMode: {fileID: 11400000, guid: 58546d98cd9eb264586e194cd6aa648f, type: 2}
+  isPaused: {fileID: 11400000, guid: ebd6fce34ce8cf347813de2e3f75a4cf, type: 2}
   cm: {fileID: 0}
 --- !u!4 &893333107
 Transform:
@@ -2448,6 +2452,7 @@ MonoBehaviour:
   gridY: 0.4375
   buildUI: {fileID: 1410319052}
   buildMode: {fileID: 11400000, guid: 58546d98cd9eb264586e194cd6aa648f, type: 2}
+  isPaused: {fileID: 11400000, guid: ebd6fce34ce8cf347813de2e3f75a4cf, type: 2}
   grabableObjs: {fileID: 11400000, guid: 8bc148263a63f1548a8e6c4fa87ebc0e, type: 2}
   currentObjSO: {fileID: 11400000, guid: e055f9112d089a945a210755e0f64499, type: 2}
   costTEMPTHINGtext: {fileID: 1693847307}
