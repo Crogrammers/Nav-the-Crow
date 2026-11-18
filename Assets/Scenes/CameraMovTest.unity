@@ -1515,9 +1515,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569ae99b1b6d11d409fbf5fe3f00c63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  movementSpeed: 5
+  movementSpeed: 5.2
   sprintSpeed: 0
-  jumpSpeed: 2
+  jumpSpeed: 4
   buildMode: {fileID: 11400000, guid: 58546d98cd9eb264586e194cd6aa648f, type: 2}
   isPaused: {fileID: 11400000, guid: ebd6fce34ce8cf347813de2e3f75a4cf, type: 2}
   floatVelocity: 0.015
