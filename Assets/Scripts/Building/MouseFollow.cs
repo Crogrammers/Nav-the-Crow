@@ -14,7 +14,7 @@ public class MouseFollow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Build Material"))
+        if (!collision.CompareTag("Build Material") && !collision.CompareTag("Distraction"))
             return;
 
         grabableObjs.objsList.Add(collision.transform);
@@ -22,7 +22,7 @@ public class MouseFollow : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Build Material"))
+        if (!collision.CompareTag("Build Material") && !collision.CompareTag("Distraction"))
             return;
 
         if (currentObjSO.objsList[0] == null)
